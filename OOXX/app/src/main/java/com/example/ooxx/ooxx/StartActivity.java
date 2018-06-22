@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
 public class StartActivity extends AppCompatActivity {
-    private Button mBtnStart;
+    private Button mBtnSingleStart;
+    private Button mBtnDoubleStart;
     private Button mBtnEnd;
     private ImageButton mImgBtnLogo;
 
@@ -17,11 +17,13 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        mBtnStart = (Button) findViewById(R.id.btnStart);
+        mBtnSingleStart = (Button) findViewById(R.id.btnSingleStart);
+        mBtnDoubleStart = (Button) findViewById(R.id.btnDoubleStart);
         mBtnEnd = (Button) findViewById(R.id.btnEnd);
         mImgBtnLogo = (ImageButton) findViewById(R.id.imgBtnLogo);
         mImgBtnLogo.setOnClickListener(imgBtnLogoOnClick);
-        mBtnStart.setOnClickListener(btnStartOnClick);
+        mBtnSingleStart.setOnClickListener(btnSingleStartOnClick);
+        mBtnDoubleStart.setOnClickListener(btnDoubleStartOnClick);
         mBtnEnd.setOnClickListener(btnEndOnClick);
     }
     private View.OnClickListener imgBtnLogoOnClick = new View.OnClickListener(){
@@ -63,11 +65,26 @@ public class StartActivity extends AppCompatActivity {
             }
         }
     };
-    private View.OnClickListener btnStartOnClick = new View.OnClickListener() {
+    private View.OnClickListener btnSingleStartOnClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent();
             intent.setClass(StartActivity.this, MainActivity.class);
+            Bundle b = new Bundle();
+            b.putBoolean("isSingle",true);
+            intent.putExtras(b);
+            startActivity(intent);
+            StartActivity.this.finish();
+        }
+    };
+    private View.OnClickListener btnDoubleStartOnClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent();
+            intent.setClass(StartActivity.this, MainActivity.class);
+            Bundle b = new Bundle();
+            b.putBoolean("isSingle",false);
+            intent.putExtras(b);
             startActivity(intent);
             StartActivity.this.finish();
         }

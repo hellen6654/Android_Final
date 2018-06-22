@@ -2,6 +2,12 @@
     <string name="app_name">OOXX</string>
     <string name="SingleGame">單人遊戲</string>
     <string name="DoubleGame">雙人遊戲</string>
+    <string name="NowMode">目前模式：</string>
+    <string name="NotEmpty">已經被畫了，請選擇其他空格</string>
     <string name="EndGame">結束</string>
+    <string name="Player">玩家</string>
+    <string name="Computer">電腦</string>
+    <string name="Player1">玩家1</string>
+    <string name="Player2">玩家2</string>
     <string name="GameName">阿姆斯特朗旋風噴射阿姆斯特朗OOXX</string>
 </resources>

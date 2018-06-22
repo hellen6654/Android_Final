@@ -23,7 +23,7 @@
         app:srcCompat="@drawable/bg" />
 
     <ImageButton
-        android:id="@+id/ingBtn4"
+        android:id="@+id/imgBtn4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -46,7 +46,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@null"
-        app:layout_constraintBottom_toTopOf="@+id/ingBtn4"
+        app:layout_constraintBottom_toTopOf="@+id/imgBtn4"
         app:layout_constraintEnd_toEndOf="@+id/imgBG"
         app:layout_constraintStart_toStartOf="@+id/imgBG"
         app:layout_constraintTop_toTopOf="@+id/imgBG"
@@ -63,7 +63,7 @@
         android:layout_marginTop="8dp"
         android:background="@null"
         app:layout_constraintBottom_toBottomOf="@+id/imgBG"
-        app:layout_constraintEnd_toStartOf="@+id/ingBtn4"
+        app:layout_constraintEnd_toStartOf="@+id/imgBtn4"
         app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="@+id/imgBG"
         app:layout_constraintTop_toTopOf="@+id/imgBG"
@@ -81,7 +81,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/imgBG"
         app:layout_constraintEnd_toEndOf="@+id/imgBG"
         app:layout_constraintHorizontal_bias="0.795"
-        app:layout_constraintStart_toEndOf="@+id/ingBtn4"
+        app:layout_constraintStart_toEndOf="@+id/imgBtn4"
         app:layout_constraintTop_toTopOf="@+id/imgBG"
         app:srcCompat="@drawable/empty" />
 
@@ -97,7 +97,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/imgBG"
         app:layout_constraintEnd_toEndOf="@+id/imgBG"
         app:layout_constraintStart_toStartOf="@+id/imgBG"
-        app:layout_constraintTop_toBottomOf="@+id/ingBtn4"
+        app:layout_constraintTop_toBottomOf="@+id/imgBtn4"
         app:layout_constraintVertical_bias="0.818"
         app:srcCompat="@drawable/empty" />
 
@@ -164,6 +164,100 @@
         app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toEndOf="@+id/imgBtn7"
         app:layout_constraintTop_toBottomOf="@+id/imgBtn5"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/empty" />
+
+    <TextView
+        android:id="@+id/txtSingleOrDouble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/NowMode"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/imgBG"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.09" />
+
+    <ImageView
+        android:id="@+id/imgRightOrLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        app:layout_constraintBottom_toTopOf="@+id/imgBG"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/empty" />
+
+    <TextView
+        android:id="@+id/txtPlayer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/Player1"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/imgBG"
+        app:layout_constraintEnd_toStartOf="@+id/imgRightOrLeft"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/Player2"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/imgBG"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgRightOrLeft"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgPlayer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        app:layout_constraintBottom_toTopOf="@+id/imgBG"
+        app:layout_constraintEnd_toStartOf="@+id/imgRightOrLeft"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPlayer1"
+        app:srcCompat="@drawable/empty" />
+
+    <ImageView
+        android:id="@+id/imgPlayer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:background="@null"
+        app:layout_constraintBottom_toTopOf="@+id/imgBG"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintStart_toEndOf="@+id/imgRightOrLeft"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/empty" />
 
