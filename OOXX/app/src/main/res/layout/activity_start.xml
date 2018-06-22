@@ -10,13 +10,16 @@
         android:id="@+id/btnStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="360dp"
-        android:text="@string/StartGame"
+        android:layout_marginTop="356dp"
+        android:text="@string/SingleGame"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btnEnd"
@@ -31,7 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnStart"
-        app:layout_constraintVertical_bias="0.118" />
+        app:layout_constraintVertical_bias="0.272" />
 
     <ImageView
         android:id="@+id/imgName"
@@ -48,14 +51,15 @@
         app:layout_constraintVertical_bias="0.9"
         app:srcCompat="@drawable/ooxx" />
 
-    <ImageView
-        android:id="@+id/imgLogo"
+    <ImageButton
+        android:id="@+id/imgBtnLogo"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/imgName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

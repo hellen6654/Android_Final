@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">OOXX</string>
-    <string name="StartGame">開始</string>
+    <string name="SingleGame">單人遊戲</string>
+    <string name="DoubleGame">雙人遊戲</string>
     <string name="EndGame">結束</string>
     <string name="GameName">阿姆斯特朗旋風噴射阿姆斯特朗OOXX</string>
 </resources>
