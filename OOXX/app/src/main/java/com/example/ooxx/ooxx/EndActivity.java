@@ -3,13 +3,16 @@ package com.example.ooxx.ooxx;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -31,6 +34,13 @@ public class EndActivity extends AppCompatActivity {
 
         mBtnOK.setOnClickListener(mBtnOnClick);
 
+        ActionBar actBar=getSupportActionBar();
+        actBar.setLogo(R.drawable.icon_round);
+        actBar.setDisplayUseLogoEnabled(true);
+        actBar.setDisplayShowHomeEnabled(true);
+        actBar.setBackgroundDrawable(new ColorDrawable(0xFFF3D95C));
+        actBar.show();
+
         records=new ArrayList();
         RecordDbOpenHelper recordDbOpenHelper = new RecordDbOpenHelper(getApplicationContext(), DB_FILE, null, 1);
         mRecordDb = recordDbOpenHelper.getWritableDatabase();
@@ -46,6 +56,9 @@ public class EndActivity extends AppCompatActivity {
             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, records);
             mListView.setAdapter(arrayAdapter);
         }
+        Animation alpha_in = new AlphaAnimation(0, 1);
+        alpha_in.setDuration(2500);
+        mListView.setAnimation(alpha_in);
     }
 
     private View.OnClickListener mBtnOnClick = new View.OnClickListener() {

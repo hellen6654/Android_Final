@@ -1,13 +1,19 @@
 package com.example.ooxx.ooxx;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
 public class StartActivity extends AppCompatActivity {
+    private static final int MENU_RECORD=Menu.FIRST;
+
     private Button mBtnSingleStart;
     private Button mBtnDoubleStart;
     private Button mBtnEnd;
@@ -25,7 +31,34 @@ public class StartActivity extends AppCompatActivity {
         mBtnSingleStart.setOnClickListener(btnSingleStartOnClick);
         mBtnDoubleStart.setOnClickListener(btnDoubleStartOnClick);
         mBtnEnd.setOnClickListener(btnEndOnClick);
+
+        ActionBar actBar=getSupportActionBar();
+        actBar.setLogo(R.drawable.icon_round);
+        actBar.setDisplayUseLogoEnabled(true);
+        actBar.setDisplayShowHomeEnabled(true);
+        actBar.setBackgroundDrawable(new ColorDrawable(0xFFF3D95C));
+        actBar.show();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add(0,MENU_RECORD,0,"查看紀錄");
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId())
+        {
+            case MENU_RECORD:
+                Intent intent = new Intent();
+                intent.setClass(StartActivity.this,EndActivity.class);
+                startActivity(intent);
+                StartActivity.this.finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private View.OnClickListener imgBtnLogoOnClick = new View.OnClickListener(){
         @Override
         public void onClick(View v) {

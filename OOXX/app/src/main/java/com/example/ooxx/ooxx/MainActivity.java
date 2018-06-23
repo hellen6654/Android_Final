@@ -5,10 +5,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -21,6 +25,8 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
     private static final String DB_FILE = "records.db", DB_TABLE = "records";
     private SQLiteDatabase mRecordDb;
+
+    private static final int MENU_RECORD=Menu.FIRST;
 
     private TextView mTxtSingleOrDouble;
     private TextView mTxtPlayer1, mTxtPlayer2;
@@ -57,6 +63,13 @@ public class MainActivity extends AppCompatActivity {
         mImgPlayer2=(ImageView) findViewById(R.id.imgPlayer2);
         Bundle b = this.getIntent().getExtras();
         isSingle= b.getBoolean("isSingle");
+
+        ActionBar actBar=getSupportActionBar();
+        actBar.setLogo(R.drawable.icon_round);
+        actBar.setDisplayUseLogoEnabled(true);
+        actBar.setDisplayShowHomeEnabled(true);
+        actBar.setBackgroundDrawable(new ColorDrawable(0xFFF3D95C));
+        actBar.show();
 
         if (isSingle)
         {
@@ -146,6 +159,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         mRecordDb.close();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add(0,MENU_RECORD,0,"查看紀錄");
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId())
+        {
+            case MENU_RECORD:
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this,EndActivity.class);
+                startActivity(intent);
+                MainActivity.this.finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private View.OnClickListener mImgBtn0OnClicked = new View.OnClickListener() {
