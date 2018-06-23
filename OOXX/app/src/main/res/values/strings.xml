@@ -9,5 +9,10 @@
     <string name="Computer">電腦</string>
     <string name="Player1">玩家1</string>
     <string name="Player2">玩家2</string>
+    <string name="PlayerWin">玩家贏了</string>
+    <string name="Player1Win">玩家1贏了</string>
+    <string name="Player2Win">玩家2贏了</string>
+    <string name="ComputerWin">電腦贏了</string>
+    <string name="Draw">平手</string>
     <string name="GameName">阿姆斯特朗旋風噴射阿姆斯特朗OOXX</string>
 </resources>

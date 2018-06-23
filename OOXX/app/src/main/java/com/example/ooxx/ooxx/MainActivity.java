@@ -40,10 +40,6 @@ public class MainActivity extends AppCompatActivity {
         3  == draw
     */
     int playTable[]=new int[9];
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,16 +78,10 @@ public class MainActivity extends AppCompatActivity {
         mImgBtn8.setOnClickListener(mImgBtn8OnClicked);
 
 
-        if (state==1)
-        {
-            mImgPlayer1.setImageResource(R.drawable.circle);
-            mImgPlayer2.setImageResource(R.drawable.xx);
-        }
-        else
-        {
-            mImgPlayer1.setImageResource(R.drawable.xx);
-            mImgPlayer2.setImageResource(R.drawable.circle);
-        }
+
+        mImgPlayer1.setImageResource(R.drawable.circle);
+        mImgPlayer2.setImageResource(R.drawable.xx);
+
         changeDirect();
 
     }
@@ -110,6 +100,13 @@ public class MainActivity extends AppCompatActivity {
                     state*=-1;
                     Iswin();
                     changeDirect();
+                    if (isSingle)
+                    {
+                        SinglePlayerAI();
+                        Iswin();
+                        changeDirect();
+
+                    }
                 }
         }
     };
@@ -127,6 +124,13 @@ public class MainActivity extends AppCompatActivity {
                     mImgBtn1.setImageDrawable(getDrawable(R.drawable.xx));
                 state*=-1;
                 changeDirect();
+                if (isSingle)
+                {
+                    SinglePlayerAI();
+                    Iswin();
+                    changeDirect();
+
+                }
             }
         }
     };
@@ -145,6 +149,12 @@ public class MainActivity extends AppCompatActivity {
                 state*=-1;
                 Iswin();
                 changeDirect();
+                if (isSingle)
+                {
+                    SinglePlayerAI();
+                    Iswin();
+                    changeDirect();
+                }
             }
 
         }
@@ -164,6 +174,13 @@ public class MainActivity extends AppCompatActivity {
                 state*=-1;
                 Iswin();
                 changeDirect();
+                if (isSingle)
+                {
+                    SinglePlayerAI();
+                    Iswin();
+                    changeDirect();
+
+                }
             }
         }
     };
@@ -182,6 +199,13 @@ public class MainActivity extends AppCompatActivity {
                 state*=-1;
                 Iswin();
                 changeDirect();
+                if (isSingle)
+                {
+                    SinglePlayerAI();
+                    Iswin();
+                    changeDirect();
+
+                }
             }
         }
     };
@@ -200,6 +224,12 @@ public class MainActivity extends AppCompatActivity {
                 state*=-1;
                 Iswin();
                 changeDirect();
+                if (isSingle)
+                {
+                    SinglePlayerAI();
+                    Iswin();
+                    changeDirect();
+                }
             }
         }
     };
@@ -218,6 +248,13 @@ public class MainActivity extends AppCompatActivity {
                 state*=-1;
                 Iswin();
                 changeDirect();
+                if (isSingle)
+                {
+                    SinglePlayerAI();
+                    Iswin();
+                    changeDirect();
+
+                }
             }
         }
     };
@@ -236,6 +273,13 @@ public class MainActivity extends AppCompatActivity {
                 state*=-1;
                 Iswin();
                 changeDirect();
+                if (isSingle)
+                {
+                    SinglePlayerAI();
+                    Iswin();
+                    changeDirect();
+
+                }
             }
         }
     };
@@ -254,6 +298,12 @@ public class MainActivity extends AppCompatActivity {
                 state=state*(-1);
                 Iswin();
                 changeDirect();
+                if (isSingle)
+                {
+                    SinglePlayerAI();
+                    Iswin();
+                    changeDirect();
+                }
             }
         }
     };
@@ -271,124 +321,261 @@ public class MainActivity extends AppCompatActivity {
          */
         Intent intent = new Intent();
         Bundle b = new Bundle();
-
-
         if (playTable[0]==playTable[1]&&playTable[1]==playTable[2]&&playTable[0]!=0)
         {
-            if (playTable[0]==1)
+            if (playTable[0]==1&&playTable[1]==1&&playTable[2]==1)
+            {
                 whoWin=1;
+
+            }
             else
+            {
                 whoWin=2;
+
+            }
             intent.setClass(MainActivity.this,EndActivity.class);
             b.putInt("whoWin",whoWin);
+            b.putBoolean("IsSingle",isSingle);
             intent.putExtras(b);
             startActivity(intent);
             MainActivity.this.finish();
-
         }
         else if (playTable[3]==playTable[4]&&playTable[4]==playTable[5]&&playTable[3]!=0)
         {
-            if (playTable[3]==1)
+            if (playTable[3]==1&&playTable[4]==1&&playTable[5]==1)
+            {
                 whoWin=1;
+            }
             else
+            {
                 whoWin=2;
+            }
             intent.setClass(MainActivity.this,EndActivity.class);
             b.putInt("whoWin",whoWin);
+            b.putBoolean("IsSingle",isSingle);
             intent.putExtras(b);
             startActivity(intent);
             MainActivity.this.finish();
         }
         else if (playTable[6]==playTable[7]&&playTable[7]==playTable[8]&&playTable[6]!=0)
         {
-            if (playTable[6]==1)
+            if (playTable[6]==1&&playTable[7]==1&&playTable[8]==1)
+            {
                 whoWin=1;
+            }
             else
-                whoWin=2;
+            {
+                whoWin = 2;
+            }
             intent.setClass(MainActivity.this,EndActivity.class);
             b.putInt("whoWin",whoWin);
+            b.putBoolean("IsSingle",isSingle);
             intent.putExtras(b);
             startActivity(intent);
             MainActivity.this.finish();
         }
         else if (playTable[0]==playTable[3]&&playTable[3]==playTable[6]&&playTable[0]!=0)
         {
-            if (playTable[0]==1)
+            if (playTable[0]==1&&playTable[3]==1&&playTable[6]==1)
+            {
                 whoWin=1;
+            }
             else
+            {
                 whoWin=2;
+            }
             intent.setClass(MainActivity.this,EndActivity.class);
             b.putInt("whoWin",whoWin);
+            b.putBoolean("IsSingle",isSingle);
             intent.putExtras(b);
             startActivity(intent);
             MainActivity.this.finish();
         }
         else if (playTable[1]==playTable[4]&&playTable[4]==playTable[7]&&playTable[1]!=0)
         {
-            if (playTable[1]==1)
+            if (playTable[1]==1&&playTable[4]==1&&playTable[7]==1)
+            {
                 whoWin=1;
+            }
             else
+            {
                 whoWin=2;
+            }
             intent.setClass(MainActivity.this,EndActivity.class);
             b.putInt("whoWin",whoWin);
+            b.putBoolean("IsSingle",isSingle);
             intent.putExtras(b);
             startActivity(intent);
             MainActivity.this.finish();
         }
         else if (playTable[2]==playTable[5]&&playTable[5]==playTable[8]&&playTable[2]!=0)
         {
-            if (playTable[2]==1)
+            if (playTable[2]==1&&playTable[5]==1&&playTable[8]==1)
+            {
                 whoWin=1;
+            }
             else
+            {
                 whoWin=2;
+            }
             intent.setClass(MainActivity.this,EndActivity.class);
             b.putInt("whoWin",whoWin);
+            b.putBoolean("IsSingle",isSingle);
             intent.putExtras(b);
             startActivity(intent);
             MainActivity.this.finish();
         }
         else if (playTable[0]==playTable[4]&&playTable[4]==playTable[8]&&playTable[0]!=0)
         {
-            if (playTable[0]==1)
+            if (playTable[0]==1&&playTable[4]==1&&playTable[8]==1)
+            {
                 whoWin=1;
+            }
             else
+            {
                 whoWin=2;
+            }
             intent.setClass(MainActivity.this,EndActivity.class);
             b.putInt("whoWin",whoWin);
+            b.putBoolean("IsSingle",isSingle);
             intent.putExtras(b);
             startActivity(intent);
             MainActivity.this.finish();
         }
         else if (playTable[2]==playTable[4]&&playTable[4]==playTable[6]&&playTable[2]!=0)
         {
-            if (playTable[2]==1)
+            if (playTable[2]==1&&playTable[4]==1&&playTable[6]==1)
+            {
                 whoWin=1;
+            }
             else
+            {
                 whoWin=2;
+            }
             intent.setClass(MainActivity.this,EndActivity.class);
             b.putInt("whoWin",whoWin);
+            b.putBoolean("IsSingle",isSingle);
             intent.putExtras(b);
             startActivity(intent);
             MainActivity.this.finish();
+        }
+        else
+        {
+            int input=0;
+            for (int i=0;i<9;i++)
+                if (playTable[i]!=0) input++;
+            if (input==9)
+            {
+                whoWin=3;
+                intent.setClass(MainActivity.this,EndActivity.class);
+                b.putInt("whoWin",whoWin);
+                b.putBoolean("IsSingle",isSingle);
+                intent.putExtras(b);
+                startActivity(intent);
+                MainActivity.this.finish();
+            }
         }
         return;
     }
     private void SinglePlayerAI()
     {
-        int player1Input=0;
-        for(int i=0;i<9;i++) if(playTable[i]==1) player1Input++;
-        if (player1Input==1)
+        if (playTable[4]==0)
         {
-            int position=(int)Math.random()*9;
-            while(playTable[position]==0) position=(int)Math.random()*9;
-
-            playTable[position]=-1;
+            playTable[4]=state;
+            mImgBtn4.setImageDrawable(getDrawable(R.drawable.xx));
+            state*=-1;
             return;
-
         }
         else
         {
-
+            /*
+                012
+                345
+                678
+            */
+            if ((playTable[0]==playTable[1]&&playTable[2]==0&&playTable[0]!=0)||
+                    (playTable[1]==playTable[2]&&playTable[0]==0&&playTable[1]!=0)||
+                    (playTable[0]==playTable[2]&&playTable[1]==0&&playTable[2]!=0))
+            {
+                if (playTable[2]==0)playTable[2]=state;
+                else if (playTable[0]==0) playTable[0]=state;
+                else if (playTable[1]==0) playTable[1]=state;
+            }
+            else if ((playTable[3]==playTable[4]&&playTable[5]==0&&playTable[3]!=0)||
+                    (playTable[4]==playTable[5]&&playTable[6]==0&&playTable[4]!=0)||
+                    (playTable[3]==playTable[5]&&playTable[4]==0&&playTable[5]!=0))
+            {
+                if (playTable[5]==0) playTable[5]=state;
+                else if (playTable[6]==0) playTable[6]=state;
+                else if (playTable[4]==0) playTable[4]=state;
+            }
+            else if ((playTable[6]==playTable[7]&&playTable[8]==0&&playTable[6]!=0)||
+                    (playTable[7]==playTable[8]&&playTable[6]==0&&playTable[7]!=0)||
+                    (playTable[6]==playTable[8]&&playTable[7]==0&&playTable[8]!=0))
+            {
+                if (playTable[8]==0) playTable[8]=state;
+                else if (playTable[6]==0) playTable[6]=state;
+                else if (playTable[7]==0) playTable[7]=state;
+            }
+            else if ((playTable[0]==playTable[3]&&playTable[6]==0&&playTable[0]!=0)||
+                    (playTable[3]==playTable[6]&&playTable[0]==0&&playTable[3]!=0)||
+                    (playTable[0]==playTable[6]&&playTable[3]==0&&playTable[6]!=0))
+            {
+                if (playTable[6]==0) playTable[6]=state;
+                else if (playTable[0]==0) playTable[0]=state;
+                else if (playTable[3]==0) playTable[3]=state;
+            }
+            else if ((playTable[1]==playTable[4]&&playTable[7]==0&&playTable[1]!=0)||
+                    (playTable[4]==playTable[7]&&playTable[1]==0&&playTable[4]!=0)||
+                    (playTable[1]==playTable[7]&&playTable[4]==0&&playTable[7]!=0))
+            {
+                if (playTable[7]==0) playTable[7]=state;
+                else if (playTable[1]==0) playTable[1]=state;
+                else if (playTable[4]==0) playTable[4]=state;
+            }
+            else if ((playTable[2]==playTable[5]&&playTable[8]==0&&playTable[2]!=0)||
+                    (playTable[5]==playTable[8]&&playTable[2]==0&&playTable[5]!=0)||
+                    (playTable[2]==playTable[8]&&playTable[5]==0&&playTable[8]!=0))
+            {
+                if (playTable[2]==0) playTable[2]=state;
+                else if (playTable[5]==0) playTable[5]=state;
+                else if (playTable[8]==0) playTable[8]=state;
+            }
+            else  if ((playTable[0]==playTable[4]&&playTable[8]==0&&playTable[0]!=0)||
+                    (playTable[4]==playTable[8]&&playTable[0]==0&&playTable[4]!=0)||
+                    (playTable[0]==playTable[8]&&playTable[4]==0&&playTable[8]!=0))
+            {
+                if (playTable[0]==0) playTable[0]=state;
+                else if (playTable[4]==0) playTable[4]=state;
+                else if (playTable[8]==0) playTable[8]=state;
+            }
+            else if ((playTable[2]==playTable[4]&&playTable[6]==0&&playTable[2]!=0)||
+                    (playTable[4]==playTable[6]&&playTable[2]==0&&playTable[4]!=0)||
+                    (playTable[2]==playTable[6]&&playTable[4]==0&&playTable[6]!=0))
+            {
+                if (playTable[2]==0) playTable[2]=state;
+                else if (playTable[4]==0) playTable[4]=state;
+                else if (playTable[6]==0) playTable[6]=state;
+            }
+            else
+            {
+                int i=0;
+                for (i=0;i<9;i++)
+                    if (playTable[i]==0)
+                        break;
+               playTable[i]=state;
+            }
+            if (playTable[0]==state) mImgBtn0.setImageDrawable(getDrawable(R.drawable.xx));
+            if (playTable[1]==state) mImgBtn1.setImageDrawable(getDrawable(R.drawable.xx));
+            if (playTable[2]==state) mImgBtn2.setImageDrawable(getDrawable(R.drawable.xx));
+            if (playTable[3]==state) mImgBtn3.setImageDrawable(getDrawable(R.drawable.xx));
+            if (playTable[4]==state) mImgBtn4.setImageDrawable(getDrawable(R.drawable.xx));
+            if (playTable[5]==state) mImgBtn5.setImageDrawable(getDrawable(R.drawable.xx));
+            if (playTable[6]==state) mImgBtn6.setImageDrawable(getDrawable(R.drawable.xx));
+            if (playTable[7]==state) mImgBtn7.setImageDrawable(getDrawable(R.drawable.xx));
+            if (playTable[8]==state) mImgBtn8.setImageDrawable(getDrawable(R.drawable.xx));
+            state*=-1;
+            return;
         }
-
     }
 }
