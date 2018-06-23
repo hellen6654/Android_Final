@@ -40,9 +40,9 @@ public class EndActivity extends AppCompatActivity {
         else
         {
             c.moveToFirst();
-            records.add(c.getString(0) + "     " + c.getString(1) + " wins     "  + c.getString(2) + " draws     " + c.getString(3) + " losses");
+            records.add(c.getString(0) + "     " + c.getString(1) + " Wins     "  + c.getString(2) + " Draws     " + c.getString(3) + " Losses");
             while (c.moveToNext())
-                records.add(c.getString(0) + "     " + c.getString(1) + " wins     "  + c.getString(2) + " draws     " + c.getString(3) + " losses");
+                records.add(c.getString(0) + "     " + c.getString(1) + " Wins     "  + c.getString(2) + " Draws     " + c.getString(3) + " Losses");
             ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, records);
             mListView.setAdapter(arrayAdapter);
         }

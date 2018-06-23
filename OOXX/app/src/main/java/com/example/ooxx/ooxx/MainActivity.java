@@ -193,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
                 else
                     mImgBtn1.setImageDrawable(getDrawable(R.drawable.xx));
                 state*=-1;
+                Iswin();
                 changeDirect();
                 if (isSingle)
                 {
