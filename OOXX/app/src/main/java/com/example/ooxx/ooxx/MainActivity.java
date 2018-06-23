@@ -19,33 +19,23 @@ import android.widget.Toast;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-
     private static final String DB_FILE = "records.db", DB_TABLE = "records";
     private SQLiteDatabase mRecordDb;
 
     private TextView mTxtSingleOrDouble;
-    private TextView mTxtPlayer1;
-    private TextView mTxtPlayer2;
-    private ImageButton mImgBtn0;
-    private ImageButton mImgBtn1;
-    private ImageButton mImgBtn2;
-    private ImageButton mImgBtn3;
-    private ImageButton mImgBtn4;
-    private ImageButton mImgBtn5;
-    private ImageButton mImgBtn6;
-    private ImageButton mImgBtn7;
-    private ImageButton mImgBtn8;
+    private TextView mTxtPlayer1, mTxtPlayer2;
+    private ImageButton mImgBtn0, mImgBtn1, mImgBtn2, mImgBtn3, mImgBtn4, mImgBtn5, mImgBtn6, mImgBtn7, mImgBtn8;
     private ImageView mImgRightOrLelt;
-    private ImageView mImgPlayer1;
-    private ImageView mImgPlayer2;
+    private ImageView mImgPlayer1, mImgPlayer2;
     private int state=1;
     /* single
         1==玩家  -1==電腦
        double
         1==玩家1 -1==玩家2
     */
-    boolean isSingle;
-    int playTable[]=new int[9];
+    private int input;
+    private boolean isSingle;
+    private int playTable[]=new int[9];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         mImgPlayer2=(ImageView) findViewById(R.id.imgPlayer2);
         Bundle b = this.getIntent().getExtras();
         isSingle= b.getBoolean("isSingle");
+
         if (isSingle)
         {
             mTxtSingleOrDouble.setText(getResources().getString(R.string.NowMode) + getResources().getString(R.string.SingleGame));
@@ -87,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                     .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            mTxtPlayer2.setText("Computer");
                         }
                     })
                     .show();
@@ -171,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
                     state*=-1;
                     Iswin();
                     changeDirect();
-                    if (isSingle)
+                    if (isSingle && input!=9)
                     {
                         SinglePlayerAI();
                         Iswin();
@@ -195,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
                 state*=-1;
                 Iswin();
                 changeDirect();
-                if (isSingle)
+                if (isSingle && input!=9)
                 {
                     SinglePlayerAI();
                     Iswin();
@@ -219,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
                 state*=-1;
                 Iswin();
                 changeDirect();
-                if (isSingle)
+                if (isSingle && input!=9)
                 {
                     SinglePlayerAI();
                     Iswin();
@@ -243,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
                 state*=-1;
                 Iswin();
                 changeDirect();
-                if (isSingle)
+                if (isSingle && input!=9)
                 {
                     SinglePlayerAI();
                     Iswin();
@@ -267,7 +259,7 @@ public class MainActivity extends AppCompatActivity {
                 state*=-1;
                 Iswin();
                 changeDirect();
-                if (isSingle)
+                if (isSingle && input!=9)
                 {
                     SinglePlayerAI();
                     Iswin();
@@ -291,7 +283,7 @@ public class MainActivity extends AppCompatActivity {
                 state*=-1;
                 Iswin();
                 changeDirect();
-                if (isSingle)
+                if (isSingle && input!=9)
                 {
                     SinglePlayerAI();
                     Iswin();
@@ -315,7 +307,7 @@ public class MainActivity extends AppCompatActivity {
                 state*=-1;
                 Iswin();
                 changeDirect();
-                if (isSingle)
+                if (isSingle && input!=9)
                 {
                     SinglePlayerAI();
                     Iswin();
@@ -339,7 +331,7 @@ public class MainActivity extends AppCompatActivity {
                 state*=-1;
                 Iswin();
                 changeDirect();
-                if (isSingle)
+                if (isSingle && input!=9)
                 {
                     SinglePlayerAI();
                     Iswin();
@@ -363,7 +355,7 @@ public class MainActivity extends AppCompatActivity {
                 state=state*(-1);
                 Iswin();
                 changeDirect();
-                if (isSingle)
+                if (isSingle && input!=9)
                 {
                     SinglePlayerAI();
                     Iswin();
@@ -475,7 +467,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else
         {
-            int input=0;
+            input=0;
             for (int i=0;i<9;i++)
                 if (playTable[i]!=0) input++;
             if (input==9)
@@ -594,6 +586,8 @@ public class MainActivity extends AppCompatActivity {
     {
         if(player1win==1)
             Toast.makeText(MainActivity.this, mTxtPlayer1.getText().toString() + " Win !", Toast.LENGTH_LONG).show();
+        else if(draw==1)
+            Toast.makeText(MainActivity.this, " Draw !", Toast.LENGTH_LONG).show();
         else
             Toast.makeText(MainActivity.this, mTxtPlayer2.getText().toString() + " Win !", Toast.LENGTH_LONG).show();
 
@@ -620,7 +614,7 @@ public class MainActivity extends AppCompatActivity {
         if(!isSingle)
         {
             Cursor cp2 = mRecordDb.query(true, DB_TABLE, new String[]{"name", "win", "draw", "lose"}, "name=" + "\"" + mTxtPlayer2.getText().toString() + "\"", null, null, null, null, null);
-            if (cp2.getCount()==0)
+            if (cp2.getCount()==0 && mTxtPlayer2.getText().toString() != "玩家2")
             {
                 ContentValues newRow = new ContentValues();
                 newRow.put("name", mTxtPlayer2.getText().toString());

@@ -10,6 +10,7 @@
         android:scaleType="fitCenter"
         android:background="#FFFFBB33"
         android:contentDescription="@string/app_name" />
+
     <EditText
         android:id="@+id/username"
         android:inputType="textEmailAddress"
