@@ -15,4 +15,6 @@
     <string name="ComputerWin">電腦贏了</string>
     <string name="Draw">平手</string>
     <string name="GameName">阿姆斯特朗旋風噴射阿姆斯特朗OOXX</string>
+    <string name="player1name">Player1\'s name</string>
+    <string name="player2name">Player2\'s name</string>
 </resources>
