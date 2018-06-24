@@ -169,7 +169,6 @@ public class MainActivity extends AppCompatActivity {
                         "lose INTEGER);");
             cursor.close();
         }
-
         changeDirect();
     }
 
@@ -237,17 +236,34 @@ public class MainActivity extends AppCompatActivity {
                     else
                         mImgBtn0.setImageDrawable(getDrawable(R.drawable.xx));
                     state*=-1;
-                    Iswin();
-                    changeDirect();
-                    if (isSingle && input!=9)
+                    if(Iswin()==(-1))
                     {
-                        SinglePlayerAI();
-                        Iswin();
                         changeDirect();
+                        if (isSingle && input!=9)
+                        {
+                            SinglePlayerAI();
+                            if(Iswin()==(-1))
+                                changeDirect();
+                            else
+                            {
+                                Intent intent = new Intent();
+                                intent.setClass(MainActivity.this,EndActivity.class);
+                                startActivity(intent);
+                                MainActivity.this.finish();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Intent intent = new Intent();
+                        intent.setClass(MainActivity.this,EndActivity.class);
+                        startActivity(intent);
+                        MainActivity.this.finish();
                     }
                 }
         }
     };
+
     private View.OnClickListener mImgBtn1OnClicked = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -262,17 +278,34 @@ public class MainActivity extends AppCompatActivity {
                 else
                     mImgBtn1.setImageDrawable(getDrawable(R.drawable.xx));
                 state*=-1;
-                Iswin();
-                changeDirect();
-                if (isSingle && input!=9)
+                if(Iswin()==(-1))
                 {
-                    SinglePlayerAI();
-                    Iswin();
                     changeDirect();
+                    if (isSingle && input!=9)
+                    {
+                        SinglePlayerAI();
+                        if(Iswin()==(-1))
+                            changeDirect();
+                        else
+                        {
+                            Intent intent = new Intent();
+                            intent.setClass(MainActivity.this,EndActivity.class);
+                            startActivity(intent);
+                            MainActivity.this.finish();
+                        }
+                    }
+                }
+                else
+                {
+                    Intent intent = new Intent();
+                    intent.setClass(MainActivity.this,EndActivity.class);
+                    startActivity(intent);
+                    MainActivity.this.finish();
                 }
             }
         }
     };
+
     private View.OnClickListener mImgBtn2OnClicked = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -287,17 +320,34 @@ public class MainActivity extends AppCompatActivity {
                 else
                     mImgBtn2.setImageDrawable(getDrawable(R.drawable.xx));
                 state*=-1;
-                Iswin();
-                changeDirect();
-                if (isSingle && input!=9)
+                if(Iswin()==(-1))
                 {
-                    SinglePlayerAI();
-                    Iswin();
                     changeDirect();
+                    if (isSingle && input!=9)
+                    {
+                        SinglePlayerAI();
+                        if(Iswin()==(-1))
+                            changeDirect();
+                        else
+                        {
+                            Intent intent = new Intent();
+                            intent.setClass(MainActivity.this,EndActivity.class);
+                            startActivity(intent);
+                            MainActivity.this.finish();
+                        }
+                    }
+                }
+                else
+                {
+                    Intent intent = new Intent();
+                    intent.setClass(MainActivity.this,EndActivity.class);
+                    startActivity(intent);
+                    MainActivity.this.finish();
                 }
             }
         }
     };
+
     private View.OnClickListener mImgBtn3OnClicked = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -312,17 +362,34 @@ public class MainActivity extends AppCompatActivity {
                 else
                     mImgBtn3.setImageDrawable(getDrawable(R.drawable.xx));
                 state*=-1;
-                Iswin();
-                changeDirect();
-                if (isSingle && input!=9)
+                if(Iswin()==(-1))
                 {
-                    SinglePlayerAI();
-                    Iswin();
                     changeDirect();
+                    if (isSingle && input!=9)
+                    {
+                        SinglePlayerAI();
+                        if(Iswin()==(-1))
+                            changeDirect();
+                        else
+                        {
+                            Intent intent = new Intent();
+                            intent.setClass(MainActivity.this,EndActivity.class);
+                            startActivity(intent);
+                            MainActivity.this.finish();
+                        }
+                    }
+                }
+                else
+                {
+                    Intent intent = new Intent();
+                    intent.setClass(MainActivity.this,EndActivity.class);
+                    startActivity(intent);
+                    MainActivity.this.finish();
                 }
             }
         }
     };
+
     private View.OnClickListener mImgBtn4OnClicked = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -337,17 +404,34 @@ public class MainActivity extends AppCompatActivity {
                 else
                     mImgBtn4.setImageDrawable(getDrawable(R.drawable.xx));
                 state*=-1;
-                Iswin();
-                changeDirect();
-                if (isSingle && input!=9)
+                if(Iswin()==(-1))
                 {
-                    SinglePlayerAI();
-                    Iswin();
                     changeDirect();
+                    if (isSingle && input!=9)
+                    {
+                        SinglePlayerAI();
+                        if(Iswin()==(-1))
+                            changeDirect();
+                        else
+                        {
+                            Intent intent = new Intent();
+                            intent.setClass(MainActivity.this,EndActivity.class);
+                            startActivity(intent);
+                            MainActivity.this.finish();
+                        }
+                    }
+                }
+                else
+                {
+                    Intent intent = new Intent();
+                    intent.setClass(MainActivity.this,EndActivity.class);
+                    startActivity(intent);
+                    MainActivity.this.finish();
                 }
             }
         }
     };
+
     private View.OnClickListener mImgBtn5OnClicked = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -362,17 +446,34 @@ public class MainActivity extends AppCompatActivity {
                 else
                     mImgBtn5.setImageDrawable(getDrawable(R.drawable.xx));
                 state*=-1;
-                Iswin();
-                changeDirect();
-                if (isSingle && input!=9)
+                if(Iswin()==(-1))
                 {
-                    SinglePlayerAI();
-                    Iswin();
                     changeDirect();
+                    if (isSingle && input!=9)
+                    {
+                        SinglePlayerAI();
+                        if(Iswin()==(-1))
+                            changeDirect();
+                        else
+                        {
+                            Intent intent = new Intent();
+                            intent.setClass(MainActivity.this,EndActivity.class);
+                            startActivity(intent);
+                            MainActivity.this.finish();
+                        }
+                    }
+                }
+                else
+                {
+                    Intent intent = new Intent();
+                    intent.setClass(MainActivity.this,EndActivity.class);
+                    startActivity(intent);
+                    MainActivity.this.finish();
                 }
             }
         }
     };
+
     private View.OnClickListener mImgBtn6OnClicked = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -387,17 +488,34 @@ public class MainActivity extends AppCompatActivity {
                 else
                     mImgBtn6.setImageDrawable(getDrawable(R.drawable.xx));
                 state*=-1;
-                Iswin();
-                changeDirect();
-                if (isSingle && input!=9)
+                if(Iswin()==(-1))
                 {
-                    SinglePlayerAI();
-                    Iswin();
                     changeDirect();
+                    if (isSingle && input!=9)
+                    {
+                        SinglePlayerAI();
+                        if(Iswin()==(-1))
+                            changeDirect();
+                        else
+                        {
+                            Intent intent = new Intent();
+                            intent.setClass(MainActivity.this,EndActivity.class);
+                            startActivity(intent);
+                            MainActivity.this.finish();
+                        }
+                    }
+                }
+                else
+                {
+                    Intent intent = new Intent();
+                    intent.setClass(MainActivity.this,EndActivity.class);
+                    startActivity(intent);
+                    MainActivity.this.finish();
                 }
             }
         }
     };
+
     private View.OnClickListener mImgBtn7OnClicked = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -412,17 +530,34 @@ public class MainActivity extends AppCompatActivity {
                 else
                     mImgBtn7.setImageDrawable(getDrawable(R.drawable.xx));
                 state*=-1;
-                Iswin();
-                changeDirect();
-                if (isSingle && input!=9)
+                if(Iswin()==(-1))
                 {
-                    SinglePlayerAI();
-                    Iswin();
                     changeDirect();
+                    if (isSingle && input!=9)
+                    {
+                        SinglePlayerAI();
+                        if(Iswin()==(-1))
+                            changeDirect();
+                        else
+                        {
+                            Intent intent = new Intent();
+                            intent.setClass(MainActivity.this,EndActivity.class);
+                            startActivity(intent);
+                            MainActivity.this.finish();
+                        }
+                    }
+                }
+                else
+                {
+                    Intent intent = new Intent();
+                    intent.setClass(MainActivity.this,EndActivity.class);
+                    startActivity(intent);
+                    MainActivity.this.finish();
                 }
             }
         }
     };
+
     private View.OnClickListener mImgBtn8OnClicked = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -437,117 +572,145 @@ public class MainActivity extends AppCompatActivity {
                 else
                     mImgBtn8.setImageDrawable(getDrawable(R.drawable.xx));
                 state=state*(-1);
-                Iswin();
-                changeDirect();
-                if (isSingle && input!=9)
+                if(Iswin()==(-1))
                 {
-                    SinglePlayerAI();
-                    Iswin();
                     changeDirect();
+                    if (isSingle && input!=9)
+                    {
+                        SinglePlayerAI();
+                        if(Iswin()==(-1))
+                            changeDirect();
+                        else
+                        {
+                            Intent intent = new Intent();
+                            intent.setClass(MainActivity.this,EndActivity.class);
+                            startActivity(intent);
+                            MainActivity.this.finish();
+                        }
+                    }
+                }
+                else
+                {
+                    Intent intent = new Intent();
+                    intent.setClass(MainActivity.this,EndActivity.class);
+                    startActivity(intent);
+                    MainActivity.this.finish();
                 }
             }
         }
     };
+
     private void changeDirect()
     {
         if (state==1) mImgRightOrLelt.setImageResource(R.drawable.left);
         else mImgRightOrLelt.setImageResource(R.drawable.right);
     }
-    private void Iswin()
+
+    private int Iswin()
     {
-        /*
-           012
-           345
-           678
-         */
-        Intent intent = new Intent();
         if (playTable[0]==playTable[1]&&playTable[1]==playTable[2]&&playTable[0]!=0)
         {
             if (playTable[0]==1&&playTable[1]==1&&playTable[2]==1)
+            {
                 RecordUpdate(1,0,0);
+                return 0;
+            }
             else
+            {
                 RecordUpdate(0,1,0);
-
-            intent.setClass(MainActivity.this,EndActivity.class);
-            startActivity(intent);
-            MainActivity.this.finish();
+                return 1;
+            }
         }
         else if (playTable[3]==playTable[4]&&playTable[4]==playTable[5]&&playTable[3]!=0)
         {
             if (playTable[3]==1&&playTable[4]==1&&playTable[5]==1)
+            {
                 RecordUpdate(1,0,0);
+                return 0;
+            }
             else
+            {
                 RecordUpdate(0,1,0);
-
-            intent.setClass(MainActivity.this,EndActivity.class);
-            startActivity(intent);
-            MainActivity.this.finish();
+                return 1;
+            }
         }
         else if (playTable[6]==playTable[7]&&playTable[7]==playTable[8]&&playTable[6]!=0)
         {
             if (playTable[6]==1&&playTable[7]==1&&playTable[8]==1)
+            {
                 RecordUpdate(1,0,0);
+                return 0;
+            }
             else
+            {
                 RecordUpdate(0,1,0);
-
-            intent.setClass(MainActivity.this,EndActivity.class);
-            startActivity(intent);
-            MainActivity.this.finish();
+                return 1;
+            }
         }
         else if (playTable[0]==playTable[3]&&playTable[3]==playTable[6]&&playTable[0]!=0)
         {
             if (playTable[0]==1&&playTable[3]==1&&playTable[6]==1)
+            {
                 RecordUpdate(1,0,0);
+                return 0;
+            }
             else
+            {
                 RecordUpdate(0,1,0);
-
-            intent.setClass(MainActivity.this,EndActivity.class);
-            startActivity(intent);
-            MainActivity.this.finish();
+                return 1;
+            }
         }
         else if (playTable[1]==playTable[4]&&playTable[4]==playTable[7]&&playTable[1]!=0)
         {
             if (playTable[1]==1&&playTable[4]==1&&playTable[7]==1)
+            {
                 RecordUpdate(1,0,0);
+                return 0;
+            }
             else
+            {
                 RecordUpdate(0,1,0);
-
-            intent.setClass(MainActivity.this,EndActivity.class);
-            startActivity(intent);
-            MainActivity.this.finish();
+                return 1;
+            }
         }
         else if (playTable[2]==playTable[5]&&playTable[5]==playTable[8]&&playTable[2]!=0)
         {
             if (playTable[2]==1&&playTable[5]==1&&playTable[8]==1)
+            {
                 RecordUpdate(1,0,0);
+                return 0;
+            }
             else
+            {
                 RecordUpdate(0,1,0);
-
-            intent.setClass(MainActivity.this,EndActivity.class);
-            startActivity(intent);
-            MainActivity.this.finish();
+                return 1;
+            }
         }
         else if (playTable[0]==playTable[4]&&playTable[4]==playTable[8]&&playTable[0]!=0)
         {
             if (playTable[0]==1&&playTable[4]==1&&playTable[8]==1)
+            {
                 RecordUpdate(1,0,0);
+                return 0;
+            }
             else
+            {
                 RecordUpdate(0,1,0);
-
-            intent.setClass(MainActivity.this,EndActivity.class);
-            startActivity(intent);
-            MainActivity.this.finish();
+                return 1;
+            }
         }
         else if (playTable[2]==playTable[4]&&playTable[4]==playTable[6]&&playTable[2]!=0)
         {
             if (playTable[2]==1&&playTable[4]==1&&playTable[6]==1)
+            {
                 RecordUpdate(1,0,0);
+                return 0;
+            }
             else
+            {
                 RecordUpdate(0,1,0);
-
-            intent.setClass(MainActivity.this,EndActivity.class);
-            startActivity(intent);
-            MainActivity.this.finish();
+                return 1;
+            }
         }
         else
         {
@@ -557,13 +720,12 @@ public class MainActivity extends AppCompatActivity {
             if (input==9)
             {
                 RecordUpdate(0,0,1);
-                intent.setClass(MainActivity.this,EndActivity.class);
-                startActivity(intent);
-                MainActivity.this.finish();
+                return 2;
             }
         }
-        return;
+        return (-1);
     }
+
     private void SinglePlayerAI()
     {
         if (playTable[4]==0)
@@ -575,11 +737,6 @@ public class MainActivity extends AppCompatActivity {
         }
         else
         {
-            /*
-                012
-                345
-                678
-            */
             if ((playTable[0]==playTable[1]&&playTable[2]==0&&playTable[0]!=0)||
                     (playTable[1]==playTable[2]&&playTable[0]==0&&playTable[1]!=0)||
                     (playTable[0]==playTable[2]&&playTable[1]==0&&playTable[2]!=0))

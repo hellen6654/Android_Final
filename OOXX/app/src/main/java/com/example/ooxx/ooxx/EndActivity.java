@@ -65,6 +65,17 @@ public class EndActivity extends AppCompatActivity {
         records=new ArrayList();
         RecordDbOpenHelper recordDbOpenHelper = new RecordDbOpenHelper(getApplicationContext(), DB_FILE, null, 1);
         mRecordDb = recordDbOpenHelper.getWritableDatabase();
+        Cursor cursor = mRecordDb.rawQuery("select DISTINCT tbl_name from sqlite_master where tbl_name = '" + DB_TABLE + "'", null);
+        if(cursor != null) {
+            if(cursor.getCount() == 0)	// 沒有資料表，要建立一個資料表。
+                mRecordDb.execSQL("CREATE TABLE " + DB_TABLE + " (" +
+                        "_id INTEGER PRIMARY KEY," +
+                        "name TEXT NOT NULL," +
+                        "win INTEGER," +
+                        "draw INTEGER," +
+                        "lose INTEGER);");
+            cursor.close();
+        }
         Cursor c = mRecordDb.query(true, DB_TABLE, new String[]{"name", "win", "draw", "lose"}, null, null, null, null, null, null);
         if (c.getCount()==0)
             Toast.makeText(this, "We Don't have any records.", Toast.LENGTH_LONG).show();
