@@ -2,22 +2,32 @@ package com.example.ooxx.ooxx;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
+import android.provider.MediaStore;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
 public class StartActivity extends AppCompatActivity {
-    private static final int MENU_RECORD=Menu.FIRST;
-
+    private MediaPlayer mPlayer;
     private Button mBtnSingleStart;
     private Button mBtnDoubleStart;
     private Button mBtnEnd;
     private ImageButton mImgBtnLogo;
+    private ConstraintLayout mLayout;
+
+    private static final int MENU_RECORD= Menu.FIRST,
+            MENU_PLAYER=Menu.FIRST+1,
+            MENU_PLAY=Menu.FIRST+2,
+            MENU_STOP=Menu.FIRST+3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +37,7 @@ public class StartActivity extends AppCompatActivity {
         mBtnDoubleStart = (Button) findViewById(R.id.btnDoubleStart);
         mBtnEnd = (Button) findViewById(R.id.btnEnd);
         mImgBtnLogo = (ImageButton) findViewById(R.id.imgBtnLogo);
+        mLayout=(ConstraintLayout)findViewById(R.id.startLayout);
         mImgBtnLogo.setOnClickListener(imgBtnLogoOnClick);
         mBtnSingleStart.setOnClickListener(btnSingleStartOnClick);
         mBtnDoubleStart.setOnClickListener(btnDoubleStartOnClick);
@@ -38,6 +49,18 @@ public class StartActivity extends AppCompatActivity {
         actBar.setDisplayShowHomeEnabled(true);
         actBar.setBackgroundDrawable(new ColorDrawable(0xFFF3D95C));
         actBar.show();
+
+        registerForContextMenu(mLayout);
+
+        mPlayer = MediaPlayer.create(this,R.raw.startbgm);
+        mPlayer.setLooping(true);
+        mPlayer.start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mPlayer.release();
     }
 
     @Override
@@ -57,6 +80,29 @@ public class StartActivity extends AppCompatActivity {
                 StartActivity.this.finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        SubMenu subMenu = menu.addSubMenu(0, MENU_PLAYER,0,"背景音樂");
+        subMenu.add(0,MENU_PLAY,0,"播放背景音樂");
+        subMenu.add(0,MENU_STOP,1,"停止背景音樂");
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch(item.getItemId())
+        {
+            case MENU_PLAY:
+                if(!mPlayer.isPlaying())
+                    mPlayer.start();
+                break;
+            case MENU_STOP:
+                if(mPlayer.isPlaying())
+                    mPlayer.pause();
+                break;
+        }
+        return super.onContextItemSelected(item);
     }
 
     private View.OnClickListener imgBtnLogoOnClick = new View.OnClickListener(){

@@ -6,13 +6,17 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -26,8 +30,14 @@ public class MainActivity extends AppCompatActivity {
     private static final String DB_FILE = "records.db", DB_TABLE = "records";
     private SQLiteDatabase mRecordDb;
 
-    private static final int MENU_RECORD=Menu.FIRST;
+    private static final int MENU_RECORD=Menu.FIRST,
+                            MENU_PLAYER=Menu.FIRST+1,
+                            MENU_PLAY=Menu.FIRST+2,
+                            MENU_STOP=Menu.FIRST+3;
 
+
+    private MediaPlayer mPlayer, mbuttonSound;
+    private ConstraintLayout mLayout;
     private TextView mTxtSingleOrDouble;
     private TextView mTxtPlayer1, mTxtPlayer2;
     private ImageButton mImgBtn0, mImgBtn1, mImgBtn2, mImgBtn3, mImgBtn4, mImgBtn5, mImgBtn6, mImgBtn7, mImgBtn8;
@@ -61,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         mImgRightOrLelt=(ImageView) findViewById(R.id.imgRightOrLeft);
         mImgPlayer1=(ImageView) findViewById(R.id.imgPlayer1);
         mImgPlayer2=(ImageView) findViewById(R.id.imgPlayer2);
+        mLayout=(ConstraintLayout)findViewById(R.id.mainLayout);
         Bundle b = this.getIntent().getExtras();
         isSingle= b.getBoolean("isSingle");
 
@@ -70,6 +81,13 @@ public class MainActivity extends AppCompatActivity {
         actBar.setDisplayShowHomeEnabled(true);
         actBar.setBackgroundDrawable(new ColorDrawable(0xFFF3D95C));
         actBar.show();
+
+        mPlayer = MediaPlayer.create(this,R.raw.gamebgm);
+        mPlayer.setLooping(true);
+        mPlayer.start();
+        mbuttonSound=MediaPlayer.create(this,R.raw.button);
+
+        registerForContextMenu(mLayout);
 
         if (isSingle)
         {
@@ -159,6 +177,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         mRecordDb.close();
+        mPlayer.release();
+        mbuttonSound.release();
     }
 
     @Override
@@ -180,9 +200,33 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        SubMenu subMenu = menu.addSubMenu(0, MENU_PLAYER,0,"背景音樂");
+        subMenu.add(0,MENU_PLAY,0,"播放背景音樂");
+        subMenu.add(0,MENU_STOP,1,"停止背景音樂");
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch(item.getItemId())
+        {
+            case MENU_PLAY:
+                if(!mPlayer.isPlaying())
+                    mPlayer.start();
+                break;
+            case MENU_STOP:
+                if(mPlayer.isPlaying())
+                    mPlayer.pause();
+                break;
+        }
+        return super.onContextItemSelected(item);
+    }
+
     private View.OnClickListener mImgBtn0OnClicked = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+                mbuttonSound.start();
                 if (playTable[0]!=0)
                     Toast.makeText(MainActivity.this,getResources().getString(R.string.NotEmpty),Toast.LENGTH_LONG).show();
                 else
@@ -207,6 +251,7 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener mImgBtn1OnClicked = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            mbuttonSound.start();
             if (playTable[1]!=0)
                 Toast.makeText(MainActivity.this,getResources().getString(R.string.NotEmpty),Toast.LENGTH_LONG).show();
             else
@@ -231,6 +276,7 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener mImgBtn2OnClicked = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            mbuttonSound.start();
             if (playTable[2]!=0)
                 Toast.makeText(MainActivity.this,getResources().getString(R.string.NotEmpty),Toast.LENGTH_LONG).show();
             else
@@ -255,6 +301,7 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener mImgBtn3OnClicked = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            mbuttonSound.start();
             if (playTable[3]!=0)
                 Toast.makeText(MainActivity.this,getResources().getString(R.string.NotEmpty),Toast.LENGTH_LONG).show();
             else
@@ -279,6 +326,7 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener mImgBtn4OnClicked = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            mbuttonSound.start();
             if (playTable[4]!=0)
                 Toast.makeText(MainActivity.this,getResources().getString(R.string.NotEmpty),Toast.LENGTH_LONG).show();
             else
@@ -303,6 +351,7 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener mImgBtn5OnClicked = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            mbuttonSound.start();
             if (playTable[5]!=0)
                 Toast.makeText(MainActivity.this,getResources().getString(R.string.NotEmpty),Toast.LENGTH_LONG).show();
             else
@@ -327,6 +376,7 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener mImgBtn6OnClicked = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            mbuttonSound.start();
             if (playTable[6]!=0)
                 Toast.makeText(MainActivity.this,getResources().getString(R.string.NotEmpty),Toast.LENGTH_LONG).show();
             else
@@ -351,6 +401,7 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener mImgBtn7OnClicked = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            mbuttonSound.start();
             if (playTable[7]!=0)
                 Toast.makeText(MainActivity.this,getResources().getString(R.string.NotEmpty),Toast.LENGTH_LONG).show();
             else
@@ -375,6 +426,7 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener mImgBtn8OnClicked = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            mbuttonSound.start();
             if (playTable[8]!=0)
                 Toast.makeText(MainActivity.this,getResources().getString(R.string.NotEmpty),Toast.LENGTH_LONG).show();
             else
